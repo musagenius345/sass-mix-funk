@@ -1,0 +1,68 @@
+//Usage
+//SCSS
+//@include font-face((
+//  "Outfit ExtraLight",
+//  "Outfit Light",
+//  "Outfit Medium",
+//  "Outfit Regular",
+//  "Outfit SemiBold",
+//  "Outfit Thin"
+//), "/assets/fonts/Outfit", (woff2, ttf));
+
+// CSS  output
+//@font-face {
+/*   font-family: "Outfit-ExtraLight";
+src: url('/assets/fonts/Outfit/Outfit-ExtraLight.woff2') format('woff2'),url('/assets/fonts/Outfit/Outfit-ExtraLight.ttf') format('ttf');
+font-display: swap;
+}
+@font-face {
+font-family: "Outfit-Light";
+src: url('/assets/fonts/Outfit/Outfit-Light.woff2') format('woff2'),url('/assets/fonts/Outfit/Outfit-Light.ttf') format('ttf');
+font-display: swap;
+}
+@font-face {
+font-family: "Outfit-Medium";
+src: url('/assets/fonts/Outfit/Outfit-Medium.woff2') format('woff2'),url('/assets/fonts/Outfit/Outfit-Medium.ttf') format('ttf');
+font-display: swap;
+}
+@font-face {
+font-family: "Outfit-Regular";
+src: url('/assets/fonts/Outfit/Outfit-Regular.woff2') format('woff2'),url('/assets/fonts/Outfit/Outfit-Regular.ttf') format('ttf');
+font-display: swap;
+}
+@font-face {
+font-family: "Outfit-SemiBold";
+src: url('/assets/fonts/Outfit/Outfit-SemiBold.woff2') format('woff2'),url('/assets/fonts/Outfit/Outfit-SemiBold.ttf') format('ttf');
+font-display: swap;
+}
+@font-face {
+font-family: "Outfit-Thin";
+src: url('/assets/fonts/Outfit/Outfit-Thin.woff2') format('woff2'),url('/assets/fonts/Outfit/Outfit-Thin.ttf') format('ttf');
+font-display: swap;
+} */
+
+
+// requires str-replace {function}
+
+
+
+
+
+
+
+
+@mixin font-face($font-family, $file-path, $file-formats) {
+  @each $font in $font-family {
+    $font-name: str-replace($font, " ", "-");
+    @font-face {
+      font-family: #{$font};
+      $sources: ();
+      @each $format in $file-formats {
+        $source: url('#{$file-path}/#{$font-name}.#{$format}') format('#{$format}');
+        $sources: append($sources, $source, comma);
+      }
+      src: $sources;
+      font-display: swap;
+    }
+  }
+}
