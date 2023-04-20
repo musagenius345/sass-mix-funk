@@ -1,0 +1,7 @@
+@mixin calculate-dashoffset($percentage, $dasharray) {
+  $percent = $percentage / 100;
+  $offset = $dasharray - ($percent * $dasharray);
+  $unit = unit($dasharray); // get the unit of the dasharray
+
+  stroke-dashoffset: $offset$unit;
+}
