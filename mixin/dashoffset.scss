@@ -1,3 +1,5 @@
+//Note that the dasharray value needs to be in the same units as the radius of the circle, which is usually pixels in SVG
+
 @mixin calculate-dashoffset($percentage, $dasharray) {
   $percent = $percentage / 100;
   $offset = $dasharray - ($percent * $dasharray);
